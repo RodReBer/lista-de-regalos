@@ -5,6 +5,7 @@ import { AddItemDialog } from "@/components/add-item-dialog"
 import { GiftItemCard } from "@/components/gift-item-card"
 import { ShareListCard } from "@/components/share-list-card"
 import { ReservationsCard } from "@/components/reservations-card"
+import { EditListDialog } from "@/components/edit-list-dialog"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, Calendar, Package } from "lucide-react"
 import Link from "next/link"
@@ -53,12 +54,15 @@ export default async function ListDetailPage({ params }: { params: Promise<{ lis
       <DashboardHeader userEmail={user.email} />
 
       <main className="container mx-auto px-4 py-8">
-        <Button variant="ghost" asChild className="mb-6">
-          <Link href="/dashboard">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Volver a mis listas
-          </Link>
-        </Button>
+        <div className="flex items-center justify-between mb-6">
+          <Button variant="ghost" asChild>
+            <Link href="/dashboard">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Volver a mis listas
+            </Link>
+          </Button>
+          <EditListDialog list={list} />
+        </div>
 
         {/* List Header */}
         <div
